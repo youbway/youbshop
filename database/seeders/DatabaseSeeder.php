@@ -3,6 +3,9 @@
 namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+
+
+use App\Http\Controllers\Admin\BrandController;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -21,6 +24,13 @@ class DatabaseSeeder extends Seeder
         //     'email' => 'test@example.com',
         // ]);
 
-        $this->call(AdminsTableSeeder::class);
+        // $this->call(AdminsTableSeeder::class);
+        // $this->call(VendorsTableSeeder::class);
+        // $this->call(VendorBusinessDetailsSeeder::class);
+        // $this->call(VendorBankDetailsSeeder::class);
+        // $this->call(SectionsTabelSeeder::class);
+        // $this->call(CategoriesTableSeeder::class);
+        // $this->call(BrandsTableSeeder::class);
+        $this->call(ProductsTableSeeder::class);
     }
 }

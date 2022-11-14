@@ -23,6 +23,7 @@ return new class extends Migration
             $table->string('pincode');
             $table->string('mobile');
             $table->string('email')->unique();
+            $table->bigInteger('admin_id');
             $table->tinyInteger('status');
             $table->timestamps();
         });

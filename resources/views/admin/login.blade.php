@@ -40,12 +40,24 @@
                     {{Session::get('error')}}
                   </div>
                 @endif
+
+                @if ($errors-> any ())
+                  <div class="alert alert-danger">
+                    <ul>
+                      @foreach ($errors->all() as $error)
+                        <li>{{$error}}</li>
+                      @endforeach
+                    </ul>
+                  </div>
+                @endif
                   <label class="" for="Email"> Email : </label>
-                  <input type="email" name="email" class="form-control form-control-lg" id="email" placeholder="Username">
+                  <input type="text" name="email" class="form-control form-control-lg" id="email" placeholder="Username" required>
+                  
                 </div>
                 <div class="form-group">
                   <label for="password">Password : </label>
-                  <input type="password" name="password" class="form-control form-control-lg" id="password" placeholder="Password">
+                  <input type="password" name="password" class="form-control form-control-lg" id="password" placeholder="Password" required min="6">
+                  
                 </div>
                 <div class="">
                   <button class="btn btn-block btn-primary btn-lg font-weight-medium auth-form-btn" type="submit">SIGN IN</button>

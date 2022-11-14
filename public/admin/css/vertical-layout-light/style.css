@@ -11081,6 +11081,11 @@ fieldset:disabled .wizard > .actions a,
   pointer-events: none;
 }
 
+.btn-submit {
+    background: none;
+    padding: 0px;
+    border: none;
+}
 .btn-primary, .wizard > .actions a {
   color: #fff;
   background-color: #4B49AC;
@@ -19059,7 +19064,7 @@ a.text-dark:hover, a.text-dark:focus {
   .table, .jsgrid .jsgrid-table {
     border-collapse: collapse !important;
   }
-  
+
   .table td,
   .jsgrid .jsgrid-table td, .table th, .jsgrid .jsgrid-table th {
     background-color: #ffffff !important;
@@ -22834,6 +22839,13 @@ select.border-dark.tt-hint:focus {
 }
 
 /* Icons */
+.action-icon {
+    display: inline-block;
+    font-size: 20px;
+    width: 40px;
+    margin: 0 0.2rem;
+}
+
 .icons-list {
   border-left: 1px solid #CED4DA;
   border-top: 1px solid #CED4DA;
@@ -30591,5 +30603,7 @@ div.tagsinput span.tag a {
     display: none;
   }
 }
+
+
 
 /*# sourceMappingURL=../maps/vertical-layout-light/style.css.map */

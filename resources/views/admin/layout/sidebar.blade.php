@@ -2,25 +2,74 @@
  <nav class="sidebar sidebar-offcanvas" id="sidebar">
         <ul class="nav">
           <li class="nav-item">
-            <a class="nav-link" href="index.html">
-              <i class="icon-grid menu-icon"></i>
-              <span class="menu-title">Dashboard</span>
+            <a class="nav-link" href="{{ route('admin.dashboard') }}">
+                <i class="icon-grid menu-icon"></i>
+                <span class="menu-title">Dashboard</span>
             </a>
           </li>
+        @if(Auth::guard('admin')->user()->type == "superAdmin")
           <li class="nav-item">
+            <a class="nav-link" data-toggle="collapse" href="#settings" aria-expanded="false" aria-controls="ui-basic">
+              <i class="mdi mdi-settings menu-icon"></i>
+              <span class="menu-title">Settings</span>
+              <i class="menu-arrow"></i>
+            </a>
+            <div class="collapse" id="settings">
+              <ul class="nav flex-column sub-menu">
+                <li class="nav-item"> <a class="nav-link text-wrap" href="{{route('admin.update.password')}}">Update admin password</a></li>
+                <li class="nav-item"> <a class="nav-link text-wrap" href="{{route('admin.update.details')}}">Update admin details</a></li>
+              </ul>
+            </div>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link" data-toggle="collapse" href="#admins" aria-expanded="false" aria-controls="ui-basic">
+              <i class="mdi mdi-account-multiple  menu-icon"></i>
+              <span class="menu-title">Admins Management</span>
+              <i class="menu-arrow"></i>
+            </a>
+            <div class="collapse" id="admins">
+              <ul class="nav flex-column sub-menu">
+                <li class="nav-item"> <a class="nav-link text-wrap" href="{{route('admin.show.admins', 'superAdmin')}}">Super Admins</a></li>
+                <li class="nav-item"> <a class="nav-link text-wrap" href="{{route('admin.show.admins', 'vendor')}}">Vendors</a></li>
+                <li class="nav-item"> <a class="nav-link text-wrap" href="{{route('admin.show.admins', 'subAdmin')}}">Sub Admins</a></li>
+                <li class="nav-item"> <a class="nav-link text-wrap" href="{{route('admin.show.admins', '')}}">All</a></li>
+              </ul>
+            </div>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link" data-toggle="collapse" href="#catalogue" aria-expanded="false" aria-controls="ui-basic">
+              <i class="mdi mdi-apps menu-icon"></i>
+              <span class="menu-title">Catalogue Management</span>
+              <i class="menu-arrow"></i>
+            </a>
+            <div class="collapse" id="catalogue">
+              <ul class="nav flex-column sub-menu">
+                  <li class="nav-item"> <a class="nav-link text-wrap" href="{{route('admin.sections')}}">Sections</a></li>
+                  <li class="nav-item"> <a class="nav-link text-wrap" href="{{route('admin.category.index')}}">Categories</a></li>
+                  <li class="nav-item"> <a class="nav-link text-wrap" href="{{route('admin.brand.index')}}">Brands</a></li>
+                  <li class="nav-item"> <a class="nav-link text-wrap" href="{{route('admin.product.index')}}">Products</a></li>
+              </ul>
+            </div>
+          </li>
+        @elseif(Auth::guard('admin')->user()->type == "vendor")
+        <li class="nav-item">
             <a class="nav-link" data-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
               <i class="icon-layout menu-icon"></i>
-              <span class="menu-title">UI Elements</span>
+              <span class="menu-title">Vendor Details</span>
               <i class="menu-arrow"></i>
             </a>
             <div class="collapse" id="ui-basic">
               <ul class="nav flex-column sub-menu">
-                <li class="nav-item"> <a class="nav-link" href="pages/ui-features/buttons.html">Buttons</a></li>
-                <li class="nav-item"> <a class="nav-link" href="pages/ui-features/dropdowns.html">Dropdowns</a></li>
-                <li class="nav-item"> <a class="nav-link" href="pages/ui-features/typography.html">Typography</a></li>
+                <li class="nav-item"> <a class="nav-link text-wrap" href="{{route('update.vendor.details', 'personal')}}">Personal Details</a></li>
+                <li class="nav-item"> <a class="nav-link text-wrap" href="{{route('update.vendor.details', 'business')}}">Business Details</a></li>
+                <li class="nav-item"> <a class="nav-link text-wrap" href="{{route('update.vendor.details', 'bank')}}">Bank Details</a></li>
               </ul>
             </div>
           </li>
+
+        @endif
           <li class="nav-item">
             <a class="nav-link" data-toggle="collapse" href="#form-elements" aria-expanded="false" aria-controls="form-elements">
               <i class="icon-columns menu-icon"></i>

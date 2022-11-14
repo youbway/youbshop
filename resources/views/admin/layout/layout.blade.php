@@ -5,6 +5,7 @@
   <!-- Required meta tags -->
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="csrf-token" content="{{ csrf_token() }}" />
   <title>Skydash Admin</title>
   <!-- plugins:css -->
   <link rel="stylesheet" href="{{ url('admin/vendors/feather/feather.css')}}">
@@ -15,11 +16,21 @@
   <link rel="stylesheet" href="{{ url('admin/vendors/datatables.net-bs4/dataTables.bootstrap4.css')}}">
   <link rel="stylesheet" href="{{ url('admin/vendors/ti-icons/css/themify-icons.css')}}">
   <link rel="stylesheet" type="text/css" href="{{ url('admin/js/select.dataTables.min.css')}}">
+  <link rel="stylesheet" href="{{ url('admin/vendors/mdi/css/materialdesignicons.min.css') }}"/>
   <!-- End plugin css for this page -->
   <!-- inject:css -->
   <link rel="stylesheet" href="{{ url('admin/css/vertical-layout-light/style.css')}}">
   <!-- endinject -->
   <link rel="shortcut icon" href="{{ url('admin/images/favicon.png')}}" />
+  <!-- data table -->
+  <link rel="stylesheet" href="{{ url('admin/css/bootstrap-data-table.css') }}">
+  <link rel="stylesheet" href="{{ url('admin/css/dataTables.bootstrap4.min.css') }}">
+  <!-- end data table -->
+
+  <!-- livewire css -->
+  @livewireStyles
+  <!-- END livewire css -->
+
 </head>
 <body>
   <div class="container-scroller">
@@ -27,7 +38,7 @@
     @include('admin.layout.header')
     <!-- partial -->
     <div class="container-fluid page-body-wrapper">
-      
+
       <!-- partial -->
      @include('admin.layout.sidebar')
       <!-- partial -->
@@ -58,7 +69,21 @@
   <!-- Custom js for this page-->
   <script src="{{ url('admin/js/dashboard.js')}}"></script>
   <script src="{{ url('admin/js/Chart.roundedBarCharts.js')}}"></script>
+  <script src="{{ url('admin/js/file-upload.js') }}"></script>
   <!-- End custom js for this page-->
+
+  <!-- Custom admin JS -->
+  <script src="{{ url('admin/js/custom.js')}}"></script>
+  <!-- End Custom admin JS -->
+
+  <!-- sweetalert2 js  -->
+  <script src="{{ asset('admin/js/sweetalert2.all.min.js') }}"></script>
+  <!-- End sweetalert2 js  -->
+
+  <!-- livewire js -->
+    @livewireScripts
+  <!-- END livewire js -->
+
 </body>
 
 </html>
