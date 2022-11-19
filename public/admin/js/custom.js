@@ -34,6 +34,7 @@ $(document).ready(function() {
         var status = $(this).children("label").attr("status");
         var itemId = $(this).attr("item-id");
         var direction = $(this).attr("direction");
+        console.log(direction);
         $.ajax({
             headers: {
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')

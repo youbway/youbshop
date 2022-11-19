@@ -1,8 +1,11 @@
 <?php
 
+use Illuminate\Support\Facades\Auth;
+
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\BrandController;
 use App\Http\Controllers\Admin\CategoryController;
+use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\SectionController;
 use App\Models\Section;
 use Illuminate\Support\Facades\Route;
@@ -76,11 +79,12 @@ Route::name('admin.')->prefix('/admin')->group(function() {
         Route::resource('category', CategoryController::class);
 
         //******* show all brands *******
-        Route::post('update-brand-status', [BrandController::class, 'updateBrandStatus'])->name('update.category.status');
+        Route::post('update-brand-status', [BrandController::class, 'updateBrandStatus'])->name('update.brand.status');
         Route::resource('brand', BrandController::class);
 
         //******* show all products *******
-        Route::get('products', [AdminController::class, 'showProducts'])->name('product.index');
+        Route::post('update-product-status', [ProductController::class, 'updateProductStatus'])->name('update.product.status');
+        Route::resource('product', ProductController::class);
 
 
     });

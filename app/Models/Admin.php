@@ -42,6 +42,6 @@ class Admin extends Authenticatable
     public function vendor()
     {
         //i know it should be one to many but i never used one to one so i want to try it knox
-        return $this->hasOne(Vendor::class);
+        return $this->belongsTo(Vendor::class,'vendor_id');
     }
 }

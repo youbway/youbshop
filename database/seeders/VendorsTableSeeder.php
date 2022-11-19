@@ -28,8 +28,8 @@ class VendorsTableSeeder extends Seeder
                 'pincode' => $faker->postcode(),
                 'mobile' => '0750505055',
                 'email' => $faker->email(),
-                'admin_id' => 2,
                 'status' => 1,
+                'business_id' => 1,
             ]
         ];
 

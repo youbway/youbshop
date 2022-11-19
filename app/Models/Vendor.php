@@ -36,6 +36,8 @@ class Vendor extends Model
 
 
     //=============relations==================
+
+
     public function business () {
         return $this->hasOne(VendorBusinessDetails::class);
     }

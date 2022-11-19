@@ -186,7 +186,7 @@
           </div>
     </div>
 
-    <a href="{{ route('show.admins', '') }}" class="btn btn-primary"> See All</a>
+    <a href="{{ route('admin.show.admins') }}" class="btn btn-primary"> See All</a>
 </div>
 
 

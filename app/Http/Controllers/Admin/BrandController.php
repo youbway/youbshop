@@ -102,10 +102,11 @@ class BrandController extends Controller
         if ($request->ajax()) {
             $brand = Brand::findOrFail($brandId);
             $brand->delete();
-            return response()->json(['id' => $brandId]);        }
+            return response()->json(['id' => $brandId]);
+        }
     }
 
-    public function updateBrandStatus(Request $request, $id)
+    public function updateBrandStatus(Request $request)
     {
         if ($request->ajax()) {
             $status = $request->status;

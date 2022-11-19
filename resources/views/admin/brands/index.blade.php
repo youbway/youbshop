@@ -8,7 +8,7 @@
           <h4 class="card-title">All Brands</h4>
           <a href="{{route('admin.brand.create')}}"  class="btn btn-info float-right my-3"> Add brand</a>
           <div class="table-responsive">
-            <table id="sections" class="table">
+            <table id="data-table" class="table">
                 @include('admin.includes.messages')
               <thead>
                 <tr>

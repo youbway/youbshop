@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Validation\Rule;
 
 class Product extends Model
 {
@@ -14,8 +15,10 @@ class Product extends Model
         'category_id' ,
         'brand_id' ,
         'vendor_id' ,
+        'admin_id' ,
         'admin_type' ,
         'name'  ,
+        'description',
         'code' ,
         'color' ,
         'price' ,
@@ -29,4 +32,24 @@ class Product extends Model
         'is_featured' ,
         'status' ,
     ];
+
+    // ================= validation ==================
+
+
+
+
+
+
+
+
+    // ================= relations ==================
+    public function section()
+    {
+        return $this->belongsTo(Section::class);
+    }
+
+    public function category()
+    {
+        return $this->belongsTo(Category::class);
+    }
 }

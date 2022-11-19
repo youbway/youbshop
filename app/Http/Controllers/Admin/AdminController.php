@@ -282,7 +282,7 @@ class AdminController extends Controller
 
     public function adminShowVendorDetails($id)
     {
-        $adminDetails = Admin::where('id', $id)->first();
+        $adminDetails = Admin::where('id', $id)->with('vendor')->first();
         $vendorDetails = $adminDetails->vendor;
         $businessDetails = $vendorDetails->business;
         $bankDetails = $vendorDetails->bank;
