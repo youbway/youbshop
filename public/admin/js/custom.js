@@ -94,4 +94,44 @@ $(document).ready(function() {
           })
     })
 
+
+    //confirm delete attribute
+    $('.confirm-delete-attribute').click(function () {
+        var title = $(this).attr('title'); //product
+        var attribute = $(this).attr('attribute'); // image
+        var id = $(this).attr('id');
+        Swal.fire({
+            title: 'Are you sure?',
+            text: "You won't be able to revert this!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, delete it!'
+          }).then((result) => {
+            if (result.isConfirmed) {
+                Swal.fire(
+                'Deleted!',
+                'Image has been deleted.',
+                'success'
+                )
+                $.ajax({
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    },
+                    type:"PUT",
+                    url:`/admin/${title}/delete/${id}-${attribute}`,
+                    data:{id:id},
+                    success:function(resp){
+                        console.log(resp);
+                    },
+                    error:function(res){
+                        console.log(res);
+                        alert('probleme')
+                    }
+                })
+            }
+          })
+    })
+
 })

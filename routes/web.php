@@ -83,6 +83,8 @@ Route::name('admin.')->prefix('/admin')->group(function() {
         Route::resource('brand', BrandController::class);
 
         //******* show all products *******
+        Route::put('product/delete/{id}-image',[ProductController::class, 'deleteImage'])->name('product.delete.image');
+        Route::put('product/delete/{id}-video',[ProductController::class, 'deleteVideo'])->name('product.delete.video');
         Route::post('update-product-status', [ProductController::class, 'updateProductStatus'])->name('update.product.status');
         Route::resource('product', ProductController::class);
 

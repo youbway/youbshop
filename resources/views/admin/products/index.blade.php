@@ -12,15 +12,17 @@
                 @include('admin.includes.messages')
               <thead>
                 <tr>
-                  <th>ID</th>
-                  <th>Name</th>
-                  <th>Code</th>
-                  <th>Color</th>
-                  <th>Section</th>
-                  <th>Category</th>
-                  <th>Vendor</th>
-                  <th>Status</th>
-                  <th>Actions</th>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Code</th>
+                    <th>Color</th>
+                    <th>Section</th>
+                    <th>Category</th>
+                    <th>Vendor</th>
+                    <th>Image</th>
+                    <th>Featured</th>
+                    <th>Status</th>
+                    <th>Actions</th>
                 </tr>
               </thead>
               <tbody>
@@ -35,13 +37,21 @@
                         <td>{{$item->category->name}}</td>
                         <td>
                             @if($item->admin_type == 'vendor')
-                                <a href="{{ route('admin.show.vendor.details', $item->admin_id)}}" target="_blank">
-                                    {{ $item->admin_type}}
-                                </a>
+                            <a href="{{ route('admin.show.vendor.details', $item->admin_id)}}" target="_blank">
+                                {{ $item->admin_type}}
+                            </a>
                             @else
-                                {{ "super admin" }}
+                            {{ "super admin" }}
                             @endif
                         </td>
+
+                        @if ($item->image)
+                            <td><img src="{{ url('storage/images/product_img/small/'.$item->image) }}" alt=""></td>
+                        @else
+                            <td><img src="{{ url('storage/images/product_img/small/noImage.jpg') }}" alt=""></td>
+                        @endif
+                        <td>{{ $item->is_featured }}</td>
+
                         @if($item->status == '1')
                             <td>
                                 <a class="updateItemStatus" id="item-{{$item->id}}" direction="product" item-id="{{$item->id}}" href="javascript:void(0)">

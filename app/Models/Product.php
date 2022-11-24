@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Str;
 use Illuminate\Validation\Rule;
 
 class Product extends Model
@@ -38,8 +39,16 @@ class Product extends Model
 
 
 
+    // ================= attributes ==================
+    public function changePublicToStorage()
+    {
+        return str_replace('public','storage', $this->attributes['video']);
+    }
 
-
+    public function changeStorageToPublic()
+    {
+        return str_replace('publicstorage','', $this->attributes['video']);
+    }
 
 
     // ================= relations ==================

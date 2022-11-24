@@ -18,14 +18,14 @@
   <link rel="stylesheet" type="text/css" href="{{ url('admin/js/select.dataTables.min.css')}}">
   <link rel="stylesheet" href="{{ url('admin/vendors/mdi/css/materialdesignicons.min.css') }}"/>
   <!-- End plugin css for this page -->
-  <!-- inject:css -->
-  <link rel="stylesheet" href="{{ url('admin/css/vertical-layout-light/style.css')}}">
-  <!-- endinject -->
   <link rel="shortcut icon" href="{{ url('admin/images/favicon.png')}}" />
   <!-- data table -->
   <link rel="stylesheet" href="{{ url('admin/css/bootstrap-data-table.css') }}">
   <link rel="stylesheet" href="{{ url('admin/css/dataTables.bootstrap4.min.css') }}">
   <!-- end data table -->
+  <!-- inject:css -->
+  <link rel="stylesheet" href="{{ url('admin/css/vertical-layout-light/style.css')}}">
+  <!-- endinject -->
 
   <!-- livewire css -->
   @livewireStyles

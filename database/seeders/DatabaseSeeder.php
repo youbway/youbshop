@@ -6,6 +6,7 @@ namespace Database\Seeders;
 
 
 use App\Http\Controllers\Admin\BrandController;
+use App\Models\Attribute;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -31,6 +32,7 @@ class DatabaseSeeder extends Seeder
         // $this->call(SectionsTabelSeeder::class);
         // $this->call(CategoriesTableSeeder::class);
         // $this->call(BrandsTableSeeder::class);
-        $this->call(ProductsTableSeeder::class);
+        // $this->call(ProductsTableSeeder::class);
+        $this->call(AttributesTableSeeder::class);
     }
 }

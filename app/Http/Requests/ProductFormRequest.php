@@ -29,7 +29,7 @@ class ProductFormRequest extends FormRequest
             'name' => 'required|string' ,
             'brand_id' => 'exists:brands,id',
             'description' => 'required|string' ,
-            'code' => 'required|string',
+            'code' => 'required|string|unique:products,code',
             'color' => 'required|string',
             'price' => 'required|numeric',
 
