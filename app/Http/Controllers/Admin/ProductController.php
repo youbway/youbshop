@@ -3,7 +3,9 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\AttributesFormRequest;
 use App\Http\Requests\ProductFormRequest;
+use App\Models\Attribute;
 use App\Models\Brand;
 use App\Models\Category;
 use App\Models\Product;
@@ -235,4 +237,69 @@ class ProductController extends Controller
         }
         return redirect()->route('admin.product.edit', $product->id)->with('success', 'video deleted successfully');
     }
+
+    public function addAttribute($productId)
+    {
+        $product = Product::select("name", "code", "image","price", "color", "id")->with('attributes')->findOrFail($productId);
+        $attributes = $product->attributes;
+        return view('admin.attributes.add', compact('product', 'attributes'));
+    }
+
+    public function updateAttribute(AttributesFormRequest $request, $productId)
+    {
+        if ($request->sku) {
+            foreach ($request->sku as $key => $sku) {
+                $attribute = new Attribute();
+                $attribute -> product_id = $productId;
+                $attribute -> sku = $sku;
+                $attribute -> size = $request->size[$key];
+                $attribute -> stock = $request->stock[$key];
+                $attribute -> price = $request->price[$key];
+                $attribute -> status = 1;
+                $attribute->save();
+            }
+        }
+
+        if($request->updateId) {
+            foreach ($request->updateId as $key => $id) {
+                $attribute = Attribute::findOrFail($id);
+                $attribute -> update([
+                    'price' => $request->updatePrice[$key],
+                    'stock' => $request->updateStock[$key],
+                ]);
+            }
+        }
+
+        return redirect()->route('admin.product.add.attributes', $productId)->with('success', 'attributes addes successfully');
+    }
+
+    public function updateAttributeStatus(Request $request)
+    {
+
+        if ($request->ajax()) {
+            $status = $request->status;
+            if ($status == "active") {
+                $status = 0;
+            }
+            if ($status == "inactive") {
+                $status = 1;
+            }
+
+            $item = Attribute::findOrFail($request->item_id);
+            $item->update(["status" => $status]);
+
+            return response()->json(["status" => $status, "item_id" => $request->item_id]);
+        }
+    }
+
+    public function deleteAttribute(Request $request, $attributeId)
+    {
+        if ($request->ajax()) {
+            $brand = Attribute::findOrFail($attributeId);
+            $brand->delete();
+            return response()->json(['id' => $attributeId]);
+        }
+    }
+
+
 }

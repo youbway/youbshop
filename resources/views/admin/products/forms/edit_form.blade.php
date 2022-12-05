@@ -99,7 +99,7 @@
                 </div>
                 @if(!empty($item->image))
                     <div class="mb-4"><a href="{{url('storage/images/product_img/large/'.$item->image)}}" target="_blank" alt="">see the image</a></div>
-                    <div class="mb-4"><a class="confirm-delete-attribute" href="javascript:void(0)" attribute="image" title="product" id="{{$item->id}}" alt="">delete the image</a></div>
+                    <div class="mb-4"><a class="confirm-delete-attribute" href="javascript:void(0)" attribute="image" data-title="product" title="delete image product" id="{{$item->id}}" alt="">delete the image</a></div>
                 @endif
 
                 <div class="form-group">
@@ -115,7 +115,7 @@
 
                 @if(!empty($item->video))
                     <div class="mb-4"><a href="{{ url($item->changePublicToStorage()) }}" target="_blank" alt="">watch the video</a></div>
-                    <div class="mb-4"><a class="confirm-delete-attribute" href="javascript:void(0)" attribute="video" title="product" id="{{$item->id}}" alt="">delete the video</a></div>
+                    <div class="mb-4"><a class="confirm-delete-attribute" href="javascript:void(0)" attribute="video" data-title="product"  title="delete product" id="{{$item->id}}" alt="">delete the video</a></div>
                 @endif
 
                 <div class="form-check">

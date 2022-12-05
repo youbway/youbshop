@@ -7,6 +7,7 @@ use App\Http\Controllers\Admin\BrandController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\SectionController;
+use App\Http\Controllers\ProductImageController;
 use App\Models\Section;
 use Illuminate\Support\Facades\Route;
 
@@ -54,7 +55,7 @@ Route::name('admin.')->prefix('/admin')->group(function() {
         Route::match(['get', 'post'], 'update-vendor-details/{slug}', [AdminController::class, 'updateVendorDetails'])->name('update.vendor.details');
 
         // ================================== admins management =================================
-        //******* show all admins *******
+        //*******  admins *******
         Route::get('admins/{type?}', [AdminController::class, 'showAdmins'])->name('show.admins');
 
         //******* show the admins for the super Admin *******
@@ -65,7 +66,7 @@ Route::name('admin.')->prefix('/admin')->group(function() {
 
 
         // ================================== catalogue management =================================
-        //******* show all sections *******
+        //*******  sections *******
         Route::get('sections', [SectionController::class, 'index'])->name('sections');
         // Route::get('section/{id}', [SectionController::class, 'show'])->name('admin.section.show');
         Route::get('section/delete/{id}', [SectionController::class, 'delete'])->name('section.delete');
@@ -74,15 +75,27 @@ Route::name('admin.')->prefix('/admin')->group(function() {
         Route::get('section/add', [SectionController::class, 'add'])->name('section.add');
         Route::post('section/store', [SectionController::class, 'store'])->name('section.store');
         Route::post('update-section-status', [SectionController::class, 'updateSectionStatus'])->name('update.section.status');
-        //******* show all categories *******
+        //*******  categories *******
         Route::post('update-category-status', [CategoryController::class, 'updateCategoryStatus'])->name('update.category.status');
         Route::resource('category', CategoryController::class);
 
-        //******* show all brands *******
+        //*******  brands *******
         Route::post('update-brand-status', [BrandController::class, 'updateBrandStatus'])->name('update.brand.status');
         Route::resource('brand', BrandController::class);
 
-        //******* show all products *******
+        //*******  product attributes *******
+        Route::post('update-attribute-status', [ProductController::class, 'updateAttributeStatus'])->name('update.attribute.status');
+        Route::delete('attribute/{id}', [ProductController::class, 'deleteAttribute']);
+        Route::get('product/add-attributes/{id}', [ProductController::class, 'addAttribute'])->name('product.add.attributes');
+        Route::post('product/update-attributes/{id}', [ProductController::class, 'updateAttribute'])->name('product.update.attributes');
+
+        //*******  product images *******
+        Route::post('update-attribute-status', [ProductImageController::class, 'updateAttributeStatus'])->name('update.image.status');
+        Route::delete('attribute/{id}', [ProductImageController::class, 'deleteImage']);
+        Route::get('product/add-images/{id}', [ProductImageController::class, 'addImages'])->name('product.add.images');
+        Route::post('product/update-images/{id}', [ProductImageController::class, 'updateImages'])->name('product.update.images');
+
+        //*******  products *******
         Route::put('product/delete/{id}-image',[ProductController::class, 'deleteImage'])->name('product.delete.image');
         Route::put('product/delete/{id}-video',[ProductController::class, 'deleteVideo'])->name('product.delete.video');
         Route::post('update-product-status', [ProductController::class, 'updateProductStatus'])->name('update.product.status');

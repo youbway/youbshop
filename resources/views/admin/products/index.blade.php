@@ -66,11 +66,19 @@
                             </td>
                         @endif
                         <td class="d-flex">
-                            <a href="{{ route('admin.product.edit', $item->id) }}">
-                                <i class="mdi mdi-border-color action-icon " style="color:  #4B49AC;"></i>
+                            <a href="{{ route('admin.product.edit', $item->id) }}" class="">
+                                <i  title="edit product" class="mdi mdi-border-color action-icon d-flex justify-content-center " style="color:  #4B49AC;"></i>
                             </a>
-                            <a class="confirm-delete"  id="{{ $item->id }}" title="section">
-                                <i class="mdi mdi-delete action-icon color-red" style="color:red;"></i>
+                            <a class="confirm-delete"  id="{{ $item->id }}" data-title="product" title="delete product">
+                                <i class="mdi mdi-delete action-icon d-flex justify-content-center" style="color:red;"></i>
+                            </a>
+
+                            <a href="{{ route('admin.product.add.attributes', $item->id) }}">
+                                <i title="add attributes" class="mdi mdi-plus-circle action-icon d-flex justify-content-center" style="color:  #4B49AC;"></i>
+                            </a>
+
+                            <a href="{{ route('admin.product.add.images', $item->id) }}">
+                                <i title="add images " class="mdi mdi-library-plus action-icon d-flex justify-content-center" style="color:  #4B49AC;"></i>
                             </a>
                         </td>
                       </tr>

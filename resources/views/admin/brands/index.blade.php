@@ -41,7 +41,7 @@
                             <a href="{{ route('admin.brand.edit', $item->id) }}">
                                 <i class="mdi mdi-border-color action-icon " style="color:  #4B49AC;"></i>
                             </a>
-                            <a class="confirm-delete"  id="{{ $item->id }}" title="brand">
+                            <a class="confirm-delete"  id="{{ $item->id }}" data-title="brand" title="delete brand">
                                 <i class="mdi mdi-delete action-icon color-red" style="color:red;"></i>
                             </a>
                         </td>

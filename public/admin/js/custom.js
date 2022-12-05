@@ -43,6 +43,7 @@ $(document).ready(function() {
             url:'/admin/update-'+ direction + '-status',
             data:{status:status, item_id: itemId},
             success:function(resp){
+                console.log(resp);
                 if (resp.status === 0) {
                     $("#item-"+resp.item_id).html("<label class='badge badge-danger' status='inactive'>Inactive</label>")
                 } else {
@@ -57,7 +58,7 @@ $(document).ready(function() {
 
     //confirm delete
     $('.confirm-delete').click(function () {
-        var title = $(this).attr('title');
+        var title = $(this).attr('date-title');
         var id = $(this).attr('id');
         console.log(id);
         Swal.fire({
